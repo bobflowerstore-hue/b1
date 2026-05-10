@@ -57,8 +57,8 @@ export function Home() {
         className="container mx-auto px-6 pt-8 pb-4 flex justify-between items-center"
       >
         <div>
-          <h1 className="text-gray-500 text-sm font-medium">Welcome to</h1>
-          <h2 className="text-2xl font-bold text-gray-900">Bob Flower Store</h2>
+          <h1 className="text-gray-500 text-sm font-medium">{t('welcome')}</h1>
+          <h2 className="text-2xl font-bold text-gray-900">{t('shopName')}</h2>
         </div>
         <motion.button 
           onClick={toggleLanguage}
@@ -85,7 +85,7 @@ export function Home() {
               type="text" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search beautiful flowers..." 
+              placeholder={t('searchPlaceholder')}
               className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400"
             />
           </div>
@@ -111,19 +111,19 @@ export function Home() {
         <div className="bg-pink-100 rounded-3xl p-8 relative overflow-hidden flex items-center justify-between">
           <div className="relative z-10 w-2/3">
             <span className="bg-white/80 text-pink-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block backdrop-blur-sm">
-              Limited Offer
+              {t('limitedOffer')}
             </span>
-            <h3 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">
-              Get 20% Off <br/>On Roses
+            <h3 className="text-3xl font-bold text-gray-900 mb-2 leading-tight whitespace-pre-line">
+              {t('discountTitle')}
             </h3>
-            <p className="text-gray-600 mb-6 text-sm">Make someone smile today.</p>
+            <p className="text-gray-600 mb-6 text-sm">{t('smileToday')}</p>
             <motion.a 
               href="tel:0791809728"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block bg-gray-900 text-white px-6 py-3 rounded-xl font-medium text-sm shadow-lg shadow-gray-900/20"
             >
-              Order Now
+              {t('shopNow')}
             </motion.a>
           </div>
           {/* Decorative Flower Graphic */}
@@ -157,7 +157,7 @@ export function Home() {
                   : 'bg-white text-gray-600 border border-pink-100'
               }`}
             >
-              {category}
+              {category === 'All' ? (language === 'ar' ? 'الكل' : 'All') : category}
             </motion.button>
           ))}
         </div>
@@ -171,7 +171,7 @@ export function Home() {
           transition={{ delay: 0.4 }}
           className="text-2xl font-bold text-gray-900"
         >
-          Popular
+          {t('popular')}
         </motion.h2>
         <motion.button 
           initial={{ opacity: 0, x: 20 }}
@@ -179,7 +179,7 @@ export function Home() {
           transition={{ delay: 0.4 }}
           className="text-pink-500 font-medium text-sm hover:underline"
         >
-          View All
+          {t('viewAllPortfolio')}
         </motion.button>
       </div>
 
@@ -232,7 +232,7 @@ export function Home() {
                 animate={{ opacity: 1 }} 
                 className="col-span-full py-12 text-center text-gray-500"
               >
-                No flowers found matching your search.
+                {t('noFlowersFound')}
               </motion.div>
             )}
           </AnimatePresence>
