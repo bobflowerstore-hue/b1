@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router';
 import { Home as HomeIcon, Grid, User, MessageCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function Layout() {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const navItems = [
     { path: '/', icon: HomeIcon, label: 'Home' },
