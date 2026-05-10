@@ -1,9 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Search, Heart, SlidersHorizontal, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const categories = ['All', 'Roses', 'Lilies', 'Orchids', 'Tulips', 'Daisies'];
+const categories = [
+  { id: 'All', tKey: 'catAll' },
+  { id: 'Bouquets of flowers', tKey: 'catBouquets' },
+  { id: 'Roses', tKey: 'catRoses' },
+  { id: 'Occasions', tKey: 'catOccasions' }
+];
+
+const carouselImages = [
+  "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=800&auto=format&fit=crop"
+];
 
 const products = [
   {
@@ -16,7 +27,7 @@ const products = [
   {
     id: 2,
     name: 'Blush Bouquet',
-    category: 'Lilies',
+    category: 'Bouquets of flowers',
     image: 'https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=1974&auto=format&fit=crop',
     rating: 4.9
   },
@@ -30,7 +41,7 @@ const products = [
   {
     id: 4,
     name: 'Soft Peonies',
-    category: 'Daisies',
+    category: 'Occasions',
     image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1974&auto=format&fit=crop',
     rating: 5.0
   }
@@ -40,6 +51,14 @@ export function Home() {
   const { t, language, toggleLanguage } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
@@ -126,13 +145,20 @@ export function Home() {
               {t('shopNow')}
             </motion.a>
           </div>
-          {/* Decorative Flower Graphic */}
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-90 mix-blend-multiply">
-            <img 
-              src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=800&auto=format&fit=crop" 
-              alt="Roses" 
-              className="w-full h-full object-cover rounded-l-full scale-125 translate-x-8"
-            />
+          {/* Animated Carousel Graphic */}
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-90 mix-blend-multiply overflow-hidden rounded-l-full">
+            <AnimatePresence mode="wait">
+              <motion.img 
+                key={currentImageIndex}
+                src={carouselImages[currentImageIndex]}
+                initial={{ opacity: 0, scale: 1.1, x: 20 }}
+                animate={{ opacity: 1, scale: 1.25, x: 32 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                alt="Roses" 
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
           </div>
         </div>
       </motion.div>
@@ -145,19 +171,19 @@ export function Home() {
         className="mb-8"
       >
         <div className="flex overflow-x-auto hide-scrollbar px-6 gap-3 pb-4">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <motion.button
-              key={category}
+              key={category.id}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(category.id)}
               className={`whitespace-nowrap px-6 py-2.5 rounded-2xl text-sm font-medium transition-colors ${
-                activeCategory === category 
+                activeCategory === category.id 
                   ? 'bg-pink-500 text-white shadow-md shadow-pink-200' 
                   : 'bg-white text-gray-600 border border-pink-100'
               }`}
             >
-              {category === 'All' ? (language === 'ar' ? 'الكل' : 'All') : category}
+              {t(category.tKey)}
             </motion.button>
           ))}
         </div>
