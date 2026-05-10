@@ -29,6 +29,10 @@ const translations = {
     popular: 'الأكثر شيوعاً',
     searchPlaceholder: 'ابحث عن أجمل الزهور...',
     noFlowersFound: 'لم يتم العثور على زهور تطابق بحثك.',
+    catAll: 'الكل',
+    catBouquets: 'باقات زهور',
+    catRoses: 'ورود',
+    catOccasions: 'مناسبات',
     
     // Portfolio
     portfolioTitle: 'معرض أعمالنا',
@@ -86,6 +90,10 @@ const translations = {
     popular: 'Popular',
     searchPlaceholder: 'Search beautiful flowers...',
     noFlowersFound: 'No flowers found matching your search.',
+    catAll: 'All',
+    catBouquets: 'Bouquets of flowers',
+    catRoses: 'Roses',
+    catOccasions: 'Occasions',
     
     // Portfolio
     portfolioTitle: 'Our Portfolio',
