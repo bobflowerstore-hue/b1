@@ -30,7 +30,7 @@ const translations = {
     instagramFeed: 'آخر منشوراتنا على إنستغرام',
     viewOnInstagram: 'مشاهدة على إنستغرام',
     addInstagramLink: 'يمكنك إضافة رابط إنستغرام الخاص بك هنا',
-    instagramPlaceholder: 'https://instagram.com/yourprofile',
+    instagramPlaceholder: 'https://instagram.com/bob_bob_flower',
     
     // Customer Service
     customerServiceTitle: 'خدمة العملاء',
@@ -62,26 +62,26 @@ const translations = {
   },
   en: {
     // Navigation
-    home: 'Home',
-    portfolio: 'Portfolio',
-    customerService: 'Customer Service',
-    contact: 'Contact',
+    home: 'الرئيسية',
+    portfolio: 'أعمالنا',
+    customerService: 'خدمة العملاء',
+    contact: 'تواصل معنا',
     
     // Homepage
-    welcome: 'Welcome to',
+    welcome: 'اهلا بك في',
     shopName: 'Bob Flower Store',
     heroSubtitle: 'The most beautiful roses and bouquets for all your special occasions',
     ourGallery: 'Our Gallery',
-    viewAllPortfolio: 'View All Portfolio',
-    shopNow: 'Shop Now',
+    viewAllPortfolio: 'شاهد اعمالنا',
+    shopNow: 'تسوق الان',
     
     // Portfolio
-    portfolioTitle: 'Our Portfolio',
+    portfolioTitle: 'اعمالنا',
     portfolioSubtitle: 'Explore our stunning collection of rose bouquets and flower arrangements',
     instagramFeed: 'Latest from Instagram',
     viewOnInstagram: 'View on Instagram',
     addInstagramLink: 'You can add your Instagram link here',
-    instagramPlaceholder: 'https://instagram.com/yourprofile',
+    instagramPlaceholder: 'https://instagram.com/bob_bob_flower',
     
     // Customer Service
     customerServiceTitle: 'Customer Service',
@@ -96,20 +96,20 @@ const translations = {
     customDesc: 'We design special bouquets according to your request and occasion',
     
     // Contact
-    contactTitle: 'Contact Us',
+    contactTitle: 'تواصل معنا',
     contactSubtitle: 'We are happy to hear from you',
     getInTouch: 'Get in Touch',
-    phone: 'Phone',
-    email: 'Email',
-    address: 'Address',
-    followUs: 'Follow Us',
-    sendMessage: 'Send Message',
-    name: 'Name',
-    message: 'Message',
-    submit: 'Submit',
+    phone: 'موبايل',
+    email: 'البريد الالكتروني',
+    address: 'الموقع',
+    followUs: 'تابعنا',
+    sendMessage: 'ارسل رسالة',
+    name: 'الاسم',
+    message: 'الرسالة',
+    submit: 'ارسل',
     
     // Footer
-    allRightsReserved: 'All Rights Reserved',
+    allRightsReserved: 'جميع الحقوق محفوظة',
   },
 };
 
