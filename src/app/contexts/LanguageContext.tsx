@@ -21,8 +21,14 @@ const translations = {
     shopName: 'Bob Flower Store',
     heroSubtitle: 'أجمل الورود والباقات لجميع مناسباتكم الخاصة',
     ourGallery: 'معرض الصور',
-    viewAllPortfolio: 'عرض جميع الأعمال',
-    shopNow: 'تسوق الآن',
+    viewAllPortfolio: 'عرض الجميع',
+    shopNow: 'اطلب الآن',
+    limitedOffer: 'عرض محدود',
+    discountTitle: 'خصم 20٪ \nعلى الورود',
+    smileToday: 'ارسم ابتسامة اليوم.',
+    popular: 'الأكثر شيوعاً',
+    searchPlaceholder: 'ابحث عن أجمل الزهور...',
+    noFlowersFound: 'لم يتم العثور على زهور تطابق بحثك.',
     
     // Portfolio
     portfolioTitle: 'معرض أعمالنا',
@@ -30,7 +36,7 @@ const translations = {
     instagramFeed: 'آخر منشوراتنا على إنستغرام',
     viewOnInstagram: 'مشاهدة على إنستغرام',
     addInstagramLink: 'يمكنك إضافة رابط إنستغرام الخاص بك هنا',
-    instagramPlaceholder: 'https://instagram.com/bob_bob_flower',
+    instagramPlaceholder: 'https://instagram.com/yourprofile',
     
     // Customer Service
     customerServiceTitle: 'خدمة العملاء',
@@ -62,26 +68,32 @@ const translations = {
   },
   en: {
     // Navigation
-    home: 'الرئيسية',
-    portfolio: 'أعمالنا',
-    customerService: 'خدمة العملاء',
-    contact: 'تواصل معنا',
+    home: 'Home',
+    portfolio: 'Portfolio',
+    customerService: 'Customer Service',
+    contact: 'Contact',
     
     // Homepage
-    welcome: 'اهلا بك في',
+    welcome: 'Welcome to',
     shopName: 'Bob Flower Store',
     heroSubtitle: 'The most beautiful roses and bouquets for all your special occasions',
     ourGallery: 'Our Gallery',
-    viewAllPortfolio: 'شاهد اعمالنا',
-    shopNow: 'تسوق الان',
+    viewAllPortfolio: 'View All',
+    shopNow: 'Order Now',
+    limitedOffer: 'Limited Offer',
+    discountTitle: 'Get 20% Off \nOn Roses',
+    smileToday: 'Make someone smile today.',
+    popular: 'Popular',
+    searchPlaceholder: 'Search beautiful flowers...',
+    noFlowersFound: 'No flowers found matching your search.',
     
     // Portfolio
-    portfolioTitle: 'اعمالنا',
+    portfolioTitle: 'Our Portfolio',
     portfolioSubtitle: 'Explore our stunning collection of rose bouquets and flower arrangements',
     instagramFeed: 'Latest from Instagram',
     viewOnInstagram: 'View on Instagram',
     addInstagramLink: 'You can add your Instagram link here',
-    instagramPlaceholder: 'https://instagram.com/bob_bob_flower',
+    instagramPlaceholder: 'https://instagram.com/yourprofile',
     
     // Customer Service
     customerServiceTitle: 'Customer Service',
@@ -96,20 +108,20 @@ const translations = {
     customDesc: 'We design special bouquets according to your request and occasion',
     
     // Contact
-    contactTitle: 'تواصل معنا',
+    contactTitle: 'Contact Us',
     contactSubtitle: 'We are happy to hear from you',
     getInTouch: 'Get in Touch',
-    phone: 'موبايل',
-    email: 'البريد الالكتروني',
-    address: 'الموقع',
-    followUs: 'تابعنا',
-    sendMessage: 'ارسل رسالة',
-    name: 'الاسم',
-    message: 'الرسالة',
-    submit: 'ارسل',
+    phone: 'Phone',
+    email: 'Email',
+    address: 'Address',
+    followUs: 'Follow Us',
+    sendMessage: 'Send Message',
+    name: 'Name',
+    message: 'Message',
+    submit: 'Submit',
     
     // Footer
-    allRightsReserved: 'جميع الحقوق محفوظة',
+    allRightsReserved: 'All Rights Reserved',
   },
 };
 
