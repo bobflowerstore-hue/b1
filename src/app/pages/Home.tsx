@@ -9,28 +9,28 @@ const products = [
   {
     id: 1,
     name: 'Pink Elegance',
-    price: '$45.00',
+    category: 'Roses',
     image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1974&auto=format&fit=crop',
     rating: 4.8
   },
   {
     id: 2,
     name: 'Blush Bouquet',
-    price: '$65.00',
+    category: 'Lilies',
     image: 'https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=1974&auto=format&fit=crop',
     rating: 4.9
   },
   {
     id: 3,
     name: 'Rose Delight',
-    price: '$55.00',
+    category: 'Roses',
     image: 'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=1974&auto=format&fit=crop',
     rating: 4.7
   },
   {
     id: 4,
     name: 'Soft Peonies',
-    price: '$85.00',
+    category: 'Daisies',
     image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1974&auto=format&fit=crop',
     rating: 5.0
   }
@@ -39,6 +39,13 @@ const products = [
 export function Home() {
   const { t, language, toggleLanguage } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen bg-[#FDF8F9] pb-24 font-sans text-gray-800">
@@ -76,14 +83,18 @@ export function Home() {
             <Search className="w-5 h-5 text-gray-400 mr-3" />
             <input 
               type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search beautiful flowers..." 
               className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400"
             />
           </div>
           <motion.button 
+            onClick={() => { setActiveCategory('All'); setSearchQuery(''); }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-pink-500 p-4 rounded-2xl text-white shadow-md shadow-pink-200"
+            title="Reset Filters"
           >
             <SlidersHorizontal className="w-5 h-5" />
           </motion.button>
@@ -183,14 +194,15 @@ export function Home() {
           }}
           className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
         >
-          <AnimatePresence>
-            {products.map((product) => (
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((product) => (
               <motion.div
+                layout
                 key={product.id}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-3xl p-3 shadow-sm border border-pink-50 relative group"
               >
@@ -214,6 +226,15 @@ export function Home() {
                 </div>
               </motion.div>
             ))}
+            {filteredProducts.length === 0 && (
+              <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                className="col-span-full py-12 text-center text-gray-500"
+              >
+                No flowers found matching your search.
+              </motion.div>
+            )}
           </AnimatePresence>
         </motion.div>
       </div>
