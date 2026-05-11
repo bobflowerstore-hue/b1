@@ -1,168 +1,102 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-
-type Language = 'ar' | 'en';
-
-interface LanguageContextType {
-  language: Language;
-  toggleLanguage: () => void;
-  t: (key: string) => string;
-}
-
 const translations = {
   ar: {
-    // Navigation
     home: 'الرئيسية',
-    portfolio: 'اعمالنا',
+    portfolio: 'أعمالنا',
     customerService: 'خدمة العملاء',
     contact: 'اتصل بنا',
-    
-    // Homepage
+
     welcome: 'مرحباً بكم في',
     shopName: 'Bob Flower Store',
+
     heroSubtitle: 'أجمل الورود والباقات لجميع مناسباتكم الخاصة',
+
     ourGallery: 'معرض الصور',
+
     viewAllPortfolio: 'عرض الجميع',
+
     shopNow: 'اطلب الآن',
+
     limitedOffer: 'عرض محدود',
+
     discountTitle: 'خصم 20٪ \nعلى الورود',
+
     smileToday: 'ارسم ابتسامة اليوم.',
+
     popular: 'الأكثر شيوعاً',
+
     searchPlaceholder: 'ابحث عن أجمل الزهور...',
-    noFlowersFound: 'لم يتم العثور على زهور تطابق بحثك.',
+
+    noFlowersFound: 'لم يتم العثور على نتائج.',
+
     catAll: 'الكل',
+
     catBouquets: 'باقات زهور',
+
     catRoses: 'ورود',
+
     catOccasions: 'مناسبات',
-    
-    // Portfolio
-    portfolioTitle: 'معرض أعمالنا',
-    portfolioSubtitle: 'استكشف مجموعتنا الرائعة من باقات الورود وتنسيقات الزهور',
-    instagramFeed: 'آخر منشوراتنا على إنستغرام',
-    viewOnInstagram: 'مشاهدة على إنستغرام',
-    addInstagramLink: 'يمكنك إضافة رابط إنستغرام الخاص بك هنا',
-    instagramPlaceholder: 'https://instagram.com/yourprofile',
-    
-    // Customer Service
-    customerServiceTitle: 'خدمة العملاء',
-    customerServiceSubtitle: 'نحن هنا لخدمتكم',
-    deliveryTitle: 'التوصيل',
-    deliveryDesc: 'نوفر خدمة التوصيل السريع لجميع أنحاء المدينة',
-    qualityTitle: 'الجودة',
-    qualityDesc: 'نختار أجود أنواع الورود الطازجة يومياً',
-    supportTitle: 'الدعم',
-    supportDesc: 'فريق خدمة العملاء متاح على مدار الساعة',
-    customTitle: 'تصميم خاص',
-    customDesc: 'نصمم باقات خاصة حسب طلبك ومناسبتك',
-    
-    // Contact
-    contactTitle: 'اتصل بنا',
-    contactSubtitle: 'نسعد بتواصلكم معنا',
-    getInTouch: 'تواصل معنا',
-    phone: 'الهاتف',
-    email: 'البريد الإلكتروني',
-    address: 'العنوان',
-    followUs: 'تابعنا',
-    sendMessage: 'أرسل رسالة',
-    name: 'الاسم',
-    message: 'الرسالة',
-    submit: 'إرسال',
-    
-    // Footer
+
+    productPinkElegance: 'الأناقة الوردية',
+
+    productBlushBouquet: 'باقة الخدود الوردية',
+
+    productRoseDelight: 'بهجة الورود',
+
+    productSoftPeonies: 'زهور البيوني الناعمة',
+
     allRightsReserved: 'جميع الحقوق محفوظة',
   },
+
   en: {
-    // Navigation
     home: 'Home',
+
     portfolio: 'Portfolio',
+
     customerService: 'Customer Service',
+
     contact: 'Contact',
-    
-    // Homepage
+
     welcome: 'Welcome to',
+
     shopName: 'Bob Flower Store',
-    heroSubtitle: 'The most beautiful roses and bouquets for all your special occasions',
+
+    heroSubtitle:
+      'The most beautiful roses and bouquets for all your special occasions',
+
     ourGallery: 'Our Gallery',
+
     viewAllPortfolio: 'View All',
+
     shopNow: 'Order Now',
+
     limitedOffer: 'Limited Offer',
+
     discountTitle: 'Get 20% Off \nOn Roses',
+
     smileToday: 'Make someone smile today.',
+
     popular: 'Popular',
+
     searchPlaceholder: 'Search beautiful flowers...',
-    noFlowersFound: 'No flowers found matching your search.',
+
+    noFlowersFound: 'No flowers found.',
+
     catAll: 'All',
+
     catBouquets: 'Bouquets of flowers',
+
     catRoses: 'Roses',
+
     catOccasions: 'Occasions',
-    
-    // Portfolio
-    portfolioTitle: 'Our Portfolio',
-    portfolioSubtitle: 'Explore our stunning collection of rose bouquets and flower arrangements',
-    instagramFeed: 'Latest from Instagram',
-    viewOnInstagram: 'View on Instagram',
-    addInstagramLink: 'You can add your Instagram link here',
-    instagramPlaceholder: 'https://instagram.com/yourprofile',
-    
-    // Customer Service
-    customerServiceTitle: 'Customer Service',
-    customerServiceSubtitle: 'We are here to serve you',
-    deliveryTitle: 'Delivery',
-    deliveryDesc: 'We provide fast delivery service throughout the city',
-    qualityTitle: 'Quality',
-    qualityDesc: 'We select the finest fresh roses daily',
-    supportTitle: 'Support',
-    supportDesc: 'Customer service team available 24/7',
-    customTitle: 'Custom Design',
-    customDesc: 'We design special bouquets according to your request and occasion',
-    
-    // Contact
-    contactTitle: 'Contact Us',
-    contactSubtitle: 'We are happy to hear from you',
-    getInTouch: 'Get in Touch',
-    phone: 'Phone',
-    email: 'Email',
-    address: 'Address',
-    followUs: 'Follow Us',
-    sendMessage: 'Send Message',
-    name: 'Name',
-    message: 'Message',
-    submit: 'Submit',
-    
-    // Footer
+
+    productPinkElegance: 'Pink Elegance',
+
+    productBlushBouquet: 'Blush Bouquet',
+
+    productRoseDelight: 'Rose Delight',
+
+    productSoftPeonies: 'Soft Peonies',
+
     allRightsReserved: 'All Rights Reserved',
   },
 };
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('ar');
-
-  useEffect(() => {
-    // Update document direction and lang attribute
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = language;
-  }, [language]);
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'ar' ? 'en' : 'ar'));
-  };
-
-  const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations['ar']] || key;
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-}
-
-export function useLanguage() {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-}
