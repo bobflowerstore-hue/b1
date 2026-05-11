@@ -30,7 +30,7 @@ export function Contact() {
         >
           <div className="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=200&auto=format&fit=crop" 
+              src="https://www.facebook.com/photo/?fbid=122203601684498856&set=a.122101222712498856" 
               alt="Profile" 
               className="w-full h-full object-cover"
             />
