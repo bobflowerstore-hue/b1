@@ -30,7 +30,7 @@ export function Contact() {
         >
           <div className="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 overflow-hidden">
             <img 
-              src="https://www.facebook.com/photo/?fbid=122203601684498856&set=a.122101222712498856" 
+              src="https://scontent.fadj1-1.fna.fbcdn.net/v/t39.30808-6/652310014_122203601690498856_565884404542807583_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHmmT5qLYYDIy1EE58jdLpPPCqEdlsG8-48KoR2Wwbz7oj7go02Fjpsy9Qnsob2HpmKIAKQEstbfMs-G_nNn1BL&_nc_ohc=HUy5sp9eME8Q7kNvwFd8k-_&_nc_oc=Adpn-mlXYWpybPDx403ZoXLlQU541CGb4KkBHU2FTo79zlqhOyBqowAKnnCYgaJMgPE&_nc_zt=23&_nc_ht=scontent.fadj1-1.fna&_nc_gid=l0wIK34GkPN4IL_87beg5Q&_nc_ss=7b2a8&oh=00_Af7WQW9ptHR6oenihelq2rxr9yF97lvN6xBeHNZMSsnoBw&oe=6A07EE7B" 
               alt="Profile" 
               className="w-full h-full object-cover"
             />
